@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>741</width>
+    <height>453</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QMdiArea" name="mdiArea">
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAsNeeded</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAsNeeded</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="currentDeviceLabel">
+      <property name="text">
+       <string>no current device</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>741</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuEffects">
+    <property name="title">
+     <string>Effects</string>
+    </property>
+    <addaction name="actionCreateRumble"/>
+    <addaction name="actionCreatePeriodic"/>
+    <addaction name="actionCreateConstant"/>
+    <addaction name="actionCreateSpring"/>
+    <addaction name="actionCreateFriction"/>
+    <addaction name="actionCreateDamper"/>
+    <addaction name="actionCreateInertia"/>
+    <addaction name="actionCreateRamp"/>
+   </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionSelectGameController"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEffects"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSelectGameController"/>
+   <addaction name="actionAbout"/>
+   <addaction name="actionExit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="effectsToolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>true</bool>
+   </attribute>
+   <addaction name="actionCreateRumble"/>
+   <addaction name="actionCreatePeriodic"/>
+   <addaction name="actionCreateConstant"/>
+   <addaction name="actionCreateSpring"/>
+   <addaction name="actionCreateFriction"/>
+   <addaction name="actionCreateDamper"/>
+   <addaction name="actionCreateInertia"/>
+   <addaction name="actionCreateRamp"/>
+  </widget>
+  <action name="actionCreateConstant">
+   <property name="text">
+    <string>Constant</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a CONSTANT force.</string>
+   </property>
+  </action>
+  <action name="actionSelectGameController">
+   <property name="text">
+    <string>Select Game Controller</string>
+   </property>
+  </action>
+  <action name="actionCreateRumble">
+   <property name="text">
+    <string>Rumble</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a RUMBLE force.</string>
+   </property>
+  </action>
+  <action name="actionCreatePeriodic">
+   <property name="text">
+    <string>Periodic</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a PERIODIC force.</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="toolTip">
+    <string>Terminate the application</string>
+   </property>
+  </action>
+  <action name="actionCreateSpring">
+   <property name="text">
+    <string>Spring</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a SPRING force.</string>
+   </property>
+  </action>
+  <action name="actionCreateFriction">
+   <property name="text">
+    <string>Friction</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a FRICTION force.</string>
+   </property>
+  </action>
+  <action name="actionCreateDamper">
+   <property name="text">
+    <string>Damper</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a DAMPER force.</string>
+   </property>
+  </action>
+  <action name="actionCreateInertia">
+   <property name="text">
+    <string>Inertia</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a INERTIA force.</string>
+   </property>
+  </action>
+  <action name="actionCreateRamp">
+   <property name="text">
+    <string>Ramp</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a RAMP force.</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+   <property name="toolTip">
+    <string>Show About Box...</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>321</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

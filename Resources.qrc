@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/refresh.png</file>
+        <file>LICENSE</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FWConstant</class>
+ <widget class="QWidget" name="FWConstant">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>512</width>
+    <height>440</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Constant Force</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
+   <item>
+    <widget class="QWidget" name="widget_2" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Constant Force&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="ForceButtonBox" name="forceButtons" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>313</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget_6" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Envelope</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,0">
+         <item>
+          <widget class="FGWConstant" name="forceGraph" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="EnvelopeWidget" name="envelopeWidget" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>281</width>
+             <height>84</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="GroupBox">
+        <property name="title">
+         <string>Direction</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="DirectionWidget" name="directionWidget" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>131</width>
+             <height>158</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="title">
+      <string>Time</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_8">
+      <item>
+       <widget class="DurationWidget" name="durationWidget" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>240</width>
+          <height>31</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DurationWidget</class>
+   <extends>QWidget</extends>
+   <header>DurationWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ForceButtonBox</class>
+   <extends>QWidget</extends>
+   <header>ForceButtonBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FGWConstant</class>
+   <extends>QWidget</extends>
+   <header>FGWConstant.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>EnvelopeWidget</class>
+   <extends>QWidget</extends>
+   <header>EnvelopeWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DirectionWidget</class>
+   <extends>QWidget</extends>
+   <header>DirectionWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

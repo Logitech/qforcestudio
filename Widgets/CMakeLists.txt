@@ -1,0 +1,39 @@
+set(SOURCES
+    ${SOURCES}
+    ${CMAKE_CURRENT_SOURCE_DIR}/AngleWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/CodeGistWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/ConditionWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/DirectionWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/DurationSliderWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/DurationWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/EnvelopeWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/ForceButtonBox.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/PeriodFrequencyWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/RampWidget.cpp
+    PARENT_SCOPE)
+
+set(HEADERS
+    ${HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/AngleWidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/CodeGistWidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/ConditionWidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/DirectionWidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/DurationSliderWidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/DurationWidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/EnvelopeWidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/ForceButtonBox.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/PeriodFrequencyWidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/RampWidget.h
+    PARENT_SCOPE)
+
+set(FORMS
+    ${FORMS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/CodeGistWidget.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/ConditionWidget.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/DirectionWidget.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/DurationWidget.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/EnvelopeWidget.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/ForceButtonBox.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/PeriodFrequencyWidget.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/RampWidget.ui
+    PARENT_SCOPE)

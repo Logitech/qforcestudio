@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EnvelopeWidget</class>
+ <widget class="QWidget" name="EnvelopeWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>281</width>
+    <height>84</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="0" column="1">
+    <widget class="QLabel" name="attackLabel">
+     <property name="text">
+      <string>Attack</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="effectLabel">
+     <property name="text">
+      <string>Effect</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QLabel" name="fadeLabel">
+     <property name="text">
+      <string>Fade</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="levelLabel">
+     <property name="text">
+      <string>Level</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="lengthLabel">
+     <property name="text">
+      <string>Length</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QDoubleSpinBox" name="attackLevelSpinBox"/>
+   </item>
+   <item row="2" column="1">
+    <widget class="QDoubleSpinBox" name="attackLengthSpinBox"/>
+   </item>
+   <item row="1" column="2">
+    <widget class="QDoubleSpinBox" name="effectLevelSpinBox"/>
+   </item>
+   <item row="1" column="3">
+    <widget class="QDoubleSpinBox" name="fadeLevelSpinBox"/>
+   </item>
+   <item row="2" column="3">
+    <widget class="QDoubleSpinBox" name="fadeLengthSpingBox"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

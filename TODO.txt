@@ -1,0 +1,44 @@
+
+CONSTANT
+--------
+
+[ ] Add iterations & INF to CONSTANT force
+[ ] Add trigger/repeat interval to CONSTANT force
+[ ] Add delay to time widget
+[ ] Add scale to duration slider widget
+[ ] color the attack phase red, main phase green, fade phase blue
+
+
+PERIODIC
+--------
+
+[ ] Add offset slider and spin box.
+[ ] Make graph show the wave form.
+[ ] Add box to select waveform and a phase-direction box.
+[ ] add a period / frequency slider (log scale, 0.001, 0.01, 0.1, 1, 10, 100)
+
+SPRING
+------
+
+[ ] Axes ComboBox: X, Y, XY, Dir?
+[ ] Trigger with button/interval.INF
+[ ] 2 conditions?
+[ ] Graph: Left.Red spring, Right.Green spring
+[ ] Coefficient is size of the spring
+[ ] Color saturation is saturation
+[ ] Negative is left, positive is right
+[ ] Symmetric box to sync left/right
+[ ] Offset goes from -1 to 1
+[ ] full deadband is 0..1 with 1 being full left to right
+[ ] coeff can be negative (unstable spring)
+[ ] Advanced graph is position.X vs. force.Y
+
+DAMPER/FRICTION/INERTIA
+-----------------------
+
+[ ] Special 'simple' graphs, same advanced graph as spring.
+
+MISC
+----
+
+[ ] Add calibration handling to GameController class
