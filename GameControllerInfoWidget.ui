@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>468</width>
-    <height>601</height>
+    <width>404</width>
+    <height>506</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -72,9 +72,9 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QCheckBox" name="canRenderConstant">
+       <widget class="QCheckBox" name="canRenderRumble">
         <property name="text">
-         <string>Can render CONSTANT force.</string>
+         <string>Can render RUMBLE force.</string>
         </property>
        </widget>
       </item>
@@ -121,16 +121,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="canRenderCustom">
+       <widget class="QCheckBox" name="canRenderConstant">
         <property name="text">
-         <string>Can render CUSTOM force.</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="canRenderRamp">
-        <property name="text">
-         <string>Can render RAMP force.</string>
+         <string>Can render CONSTANT force.</string>
         </property>
        </widget>
       </item>
@@ -156,16 +149,23 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="canRenderRumble">
+       <widget class="QCheckBox" name="canRenderInertia">
         <property name="text">
-         <string>Can render RUMBLE force.</string>
+         <string>Can render INERTIA force.</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="canRenderInertia">
+       <widget class="QCheckBox" name="canRenderRamp">
         <property name="text">
-         <string>Can render INERTIA force.</string>
+         <string>Can render RAMP force.</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="canRenderCustom">
+        <property name="text">
+         <string>Can render CUSTOM force.</string>
         </property>
        </widget>
       </item>

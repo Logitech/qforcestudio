@@ -324,8 +324,7 @@ bool GameController::startForce(ForceEffect *force)
     input_event play;
     play.type = EV_FF;
     play.code = force->ffEffect()->id;
-    play.value = 3; // TODO: add play count
-    qDebug() << "SENDING VALUE 3 to device... (what is this 3?)";
+    play.value = 1; // TODO: add play count
     write(m_fd, (const void *) &play, sizeof(play));
     // TODO: add error handling
 #else

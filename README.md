@@ -21,7 +21,7 @@ How to build on Linux
   $ cd qforcestudio
   $ mkdir build
   $ cd build
-  $ cmake .. -G Makefile
+  $ cmake .. -G "Unix Makefiles"
   $ make
 
 
