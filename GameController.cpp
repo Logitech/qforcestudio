@@ -103,13 +103,25 @@ bool GameController::open(const QString &filename)
     }
     qDebug() << filename << ": can handle " << m_effectCount << " effects.";
 
-    if (::ioctl(m_fd, EVIOCGPHYS(sizeof(nameBuffer)), nameBuffer) < 0)
+    struct input_id inputId;
+    if (::ioctl(m_fd, EVIOCGID, &inputId) < 0)
     {
-        qDebug() << "Failed to retrieve physical location of device with error: " << errno;
+        qDebug() << "Failed to retrieve input id struct with error: " << errno;
         close();
         return false;
     }
-    qDebug() << "Physical location of " << filename << ": " << QString(nameBuffer);
+    qDebug() << "Bus type of " << filename << ": " << inputId.bustype;
+
+    if (inputId.bustype != BUS_VIRTUAL)
+    {
+        if (::ioctl(m_fd, EVIOCGPHYS(sizeof(nameBuffer)), nameBuffer) < 0)
+        {
+            qDebug() << "Failed to retrieve physical location of device with error: " << errno;
+            close();
+            return false;
+        }
+        qDebug() << "Physical location of " << filename << ": " << QString(nameBuffer);
+    }
 
     if (::ioctl(m_fd, EVIOCGUNIQ(sizeof(nameBuffer)), nameBuffer) < 0)
     {
