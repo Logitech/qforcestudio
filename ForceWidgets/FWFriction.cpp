@@ -30,5 +30,5 @@
 FWFriction::FWFriction(QWidget *parent) :
     FWCondition(parent)
 {
-    setForceName(tr("Friction Force"));
+    setForceName(tr("Friction Force"), tr("Velocity"));
 }

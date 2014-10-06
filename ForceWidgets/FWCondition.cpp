@@ -45,10 +45,12 @@ FWCondition::~FWCondition(void)
     delete ui;
 }
 
-void FWCondition::setForceName(const QString &forceName)
+void FWCondition::setForceName(const QString &forceName, const QString &xAxisLabel)
 {
     setWindowTitle(forceName);
     ui->titleLabel->setText(forceName);
+
+    m_xAxisLabel = xAxisLabel;
 }
 
 ForceEffect *FWCondition::force(void) const
@@ -71,9 +73,9 @@ void FWCondition::setForce(ForceEffect *force)
 
     if (m_force)
     {
-        ui->firstGraph->setForceCondition(m_force->firstCondition());
+        ui->firstGraph->setForceCondition(m_force->firstCondition(), m_xAxisLabel);
         ui->firstCondition->setForceCondition(m_force->firstCondition());
-        ui->secondGraph->setForceCondition(m_force->secondCondition());
+        ui->secondGraph->setForceCondition(m_force->secondCondition(), m_xAxisLabel);
         ui->secondCondition->setForceCondition(m_force->secondCondition());
 
         connect(m_force->firstCondition(), SIGNAL(changed()), this, SLOT(onFirstConditionChanged()));

@@ -30,5 +30,5 @@
 FWInertia::FWInertia(QWidget *parent) :
     FWCondition(parent)
 {
-    setForceName(tr("Inertia Force"));
+    setForceName(tr("Inertia Force"), tr("Acceleration"));
 }

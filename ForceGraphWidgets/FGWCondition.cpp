@@ -46,6 +46,9 @@ enum DragHandlerIds
 FGWCondition::FGWCondition(QWidget *parent) :
     QWidget(parent),
     m_forceCondition(NULL),
+    m_xAxisLabel(tr("Input")),
+    m_yAxisLabel(tr("Force")),
+    m_fontHeight(0),
     m_handleRadius(5.0),
     m_dragHandler(new DragHandler(this))
 {
@@ -62,7 +65,7 @@ FGWCondition::FGWCondition(QWidget *parent) :
     m_dragHandler->addHandle(Offset, Qt::SizeHorCursor);
 }
 
-void FGWCondition::setForceCondition(ForceCondition *forceCondition)
+void FGWCondition::setForceCondition(ForceCondition *forceCondition, const QString &xAxisLabel)
 {
     if (m_forceCondition)
     {
@@ -70,6 +73,7 @@ void FGWCondition::setForceCondition(ForceCondition *forceCondition)
     }
 
     m_forceCondition = forceCondition;
+    m_xAxisLabel = xAxisLabel;
 
     if (m_forceCondition)
     {
@@ -84,6 +88,26 @@ void FGWCondition::paintEvent(QPaintEvent *)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
+    QFontMetrics fm = painter.fontMetrics();
+    if (fm.ascent() + fm.descent() != m_fontHeight)
+    {
+        m_fontHeight = fm.ascent() + fm.descent();
+        updateTransforms();
+    }
+
+    // Y-Axis label
+    QTransform transform;
+    transform.rotate(270);
+    transform.translate(-(height() + fm.width(m_yAxisLabel)) / 2, fm.ascent());
+    painter.setTransform(transform);
+    painter.drawText(QPointF(0, 0), m_yAxisLabel);
+
+    // X-Axis label
+    transform.reset();
+    painter.setTransform(transform);
+    painter.drawText(QPointF((width() - fm.width(m_xAxisLabel)) / 2, height() - fm.descent()), m_xAxisLabel);
+
+    // The actual graph
     if (m_forceCondition)
     {
         QPointF startPos(-1.0, 0.0);
@@ -217,18 +241,19 @@ void FGWCondition::mouseReleaseEvent(QMouseEvent *e)
 void FGWCondition::resizeEvent(QResizeEvent *)
 {
     updateTransforms();
+    update();
 }
 
 void FGWCondition::updateTransforms(void)
 {
     m_model2View.reset();
-    m_model2View.translate(m_handleRadius, height() - m_handleRadius);
-    m_model2View.scale((width() - 2.0 * m_handleRadius) / 2.0, -(height() - 2.0 * m_handleRadius) / 2.0);
+    m_model2View.translate(m_handleRadius + m_fontHeight, height() - (m_handleRadius + m_fontHeight));
+    m_model2View.scale( ( width() - (2.0 * m_handleRadius + m_fontHeight)) / 2.0,
+                       -(height() - (2.0 * m_handleRadius + m_fontHeight)) / 2.0);
     m_model2View.translate(1.0, 1.0);
     Q_ASSERT(m_model2View.isInvertible());
     m_view2Model = m_model2View.inverted();
     m_dragHandler->setView2ModelTransform(m_view2Model);
-    update();
 }
 
 void FGWCondition::onPosDragged(int handleId, QPointF newPos)

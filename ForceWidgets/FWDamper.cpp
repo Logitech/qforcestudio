@@ -30,5 +30,5 @@
 FWDamper::FWDamper(QWidget *parent) :
     FWCondition(parent)
 {
-    setForceName(tr("Damper Force"));
+    setForceName(tr("Damper Force"), tr("Velocity"));
 }
