@@ -65,4 +65,12 @@ void FECondition::reset(void)
     m_firstCondition->setOffset(0.0);
     m_firstCondition->setPositiveCoefficient(0.7);
     m_firstCondition->setPositiveSaturation(1.0);
+
+    m_secondCondition->setIsSymmetric(false);
+    m_secondCondition->setNegativeCoefficient(0.7);
+    m_secondCondition->setNegativeSaturation(1.0);
+    m_secondCondition->setDeadBand(0.1);
+    m_secondCondition->setOffset(0.0);
+    m_secondCondition->setPositiveCoefficient(0.7);
+    m_secondCondition->setPositiveSaturation(1.0);
 }
