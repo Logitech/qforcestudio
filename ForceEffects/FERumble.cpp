@@ -36,10 +36,12 @@ FERumble::FERumble(QObject *parent) :
 QString FERumble::gist(void) const
 {
     QString result = ForceEffect::gist();
-    result.append(QString("e.u.rumble.strong_magnitude = %1; // %2\n")
-                  .arg(m_effect.u.rumble.strong_magnitude).arg(m_effect.u.rumble.strong_magnitude));
-    result.append(QString("e.u.rumble.weak_magnitude = %1; // %2\n")
-                  .arg(m_effect.u.rumble.weak_magnitude).arg(m_effect.u.rumble.weak_magnitude));
+    result.append(QString("e.u.rumble.strong_magnitude = %1; // 0x%2\n")
+                  .arg(m_effect.u.rumble.strong_magnitude)
+                  .arg(m_effect.u.rumble.strong_magnitude, 0, 16));
+    result.append(QString("e.u.rumble.weak_magnitude = %1; // 0x%2\n")
+                  .arg(m_effect.u.rumble.weak_magnitude)
+                  .arg(m_effect.u.rumble.weak_magnitude, 0, 16));
     return result;
 }
 
