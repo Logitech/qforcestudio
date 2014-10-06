@@ -176,14 +176,14 @@ void FGWPeriodic::paintEvent(QPaintEvent *)
             {
                 QPointF centerViewPos = (attackLengthViewPos + infiniteViewPos) / 2;
                 m_dragHandler->setHitAreaView(ForceLevel, centerViewPos,
-                                              m_handleRadius + infiniteViewPos.x() - attackLengthViewPos.x(),
+                                              m_handleRadius + (infiniteViewPos.x() - attackLengthViewPos.x()) / 2,
                                               m_handleRadius);
             }
             else
             {
                 QPointF centerViewPos = (attackLengthViewPos + fadeLengthViewPos) / 2;
                 m_dragHandler->setHitAreaView(ForceLevel, centerViewPos,
-                                              m_handleRadius + fadeLengthViewPos.x() - attackLengthViewPos.x(),
+                                              m_handleRadius + (fadeLengthViewPos.x() - attackLengthViewPos.x()) / 2,
                                               m_handleRadius);
                 m_dragHandler->setHitAreaView(FadeLength, fadeLengthViewPos, m_handleRadius);
                 m_dragHandler->setHitAreaView(FadeLevel, fadeLevelViewPos, m_handleRadius);
