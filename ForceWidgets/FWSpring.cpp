@@ -30,5 +30,5 @@
 FWSpring::FWSpring(QWidget *parent) :
     FWCondition(parent)
 {
-    setForceName(tr("Spring Force"));
+    setForceName(tr("Spring Force"), tr("Position"));
 }

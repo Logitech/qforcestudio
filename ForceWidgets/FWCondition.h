@@ -42,7 +42,7 @@ public:
     explicit FWCondition(QWidget *parent = 0);
     ~FWCondition(void);
 
-    void setForceName(const QString &forceName);
+    void setForceName(const QString &forceName, const QString &xAxisLabel);
 
     virtual ForceEffect *force(void) const;
     virtual void setForce(ForceEffect *force);
@@ -54,6 +54,7 @@ protected slots:
 private:
     Ui::FWCondition *ui;
     FECondition *m_force;
+    QString m_xAxisLabel;
 };
 
 #endif // FWCONDITION_H

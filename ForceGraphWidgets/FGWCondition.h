@@ -38,7 +38,7 @@ class FGWCondition : public QWidget
 public:
     explicit FGWCondition(QWidget *parent = 0);
 
-    void setForceCondition(ForceCondition *forceCondition);
+    void setForceCondition(ForceCondition *forceCondition, const QString &xAxisLabel);
 
 protected:
     virtual void paintEvent(QPaintEvent *);
@@ -54,6 +54,9 @@ protected slots:
 
 private:
     ForceCondition *m_forceCondition;
+    QString m_xAxisLabel;
+    QString m_yAxisLabel;
+    int m_fontHeight;
     qreal m_handleRadius;
     QTransform m_model2View;
     QTransform m_view2Model;
