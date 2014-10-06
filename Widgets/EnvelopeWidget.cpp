@@ -134,5 +134,9 @@ void EnvelopeWidget::updateUserInterface(void)
         wasBlocked = ui->effectLevelSpinBox->blockSignals(true);
         ui->effectLevelSpinBox->setValue(m_force->level());
         ui->effectLevelSpinBox->blockSignals(wasBlocked);
+
+        bool isInfinite = m_force->isInfiniteDuration();
+        ui->fadeLevelSpinBox->setEnabled(!isInfinite);
+        ui->fadeLengthSpingBox->setEnabled(!isInfinite);
     }
 }
