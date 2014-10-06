@@ -302,8 +302,12 @@ bool ForceEffect::withinAttackLength(double atTimeIndex) const
 bool ForceEffect::withinFadeLength(double atTimeIndex, double totalLength) const
 {
     Q_ASSERT(m_envelope);
-    double unused;
-    return m_envelope->withinFadeLength(atTimeIndex, totalLength, unused);
+    if (!isInfiniteDuration())
+    {
+        double unused;
+        return m_envelope->withinFadeLength(atTimeIndex, totalLength, unused);
+    }
+    return false;
 }
 
 double ForceEffect::envelopeLevel(double atTimeIndex, double totalLength) const
