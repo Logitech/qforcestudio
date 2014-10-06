@@ -46,12 +46,12 @@ QString FEConstant::gist(void) const
 
 void FEConstant::reset(void)
 {
-    setLevel(0.5);
+    ForceEffect::reset();
+    setLevel(1.0);
     setAttackLevel(0.25);
     setAttackLength(1.0);
-    setFadeLevel(1.0);
+    setFadeLevel(0.25);
     setFadeLength(1.0);
-    ForceEffect::reset();
 }
 
 double FEConstant::level(void) const

@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>512</width>
-    <height>440</height>
+    <width>524</width>
+    <height>436</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Constant Force</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
    <item>
     <widget class="QWidget" name="widget_2" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout">
@@ -53,17 +53,36 @@
     <widget class="QWidget" name="widget_6" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_6">
       <property name="leftMargin">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>7</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>7</number>
       </property>
+      <item>
+       <widget class="QGroupBox" name="GroupBox">
+        <property name="title">
+         <string>Direction</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="DirectionWidget" name="directionWidget" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>131</width>
+             <height>158</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
       <item>
        <widget class="QGroupBox" name="groupBox">
         <property name="title">
@@ -86,25 +105,6 @@
             <size>
              <width>281</width>
              <height>84</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="GroupBox">
-        <property name="title">
-         <string>Direction</string>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_9">
-         <item>
-          <widget class="DirectionWidget" name="directionWidget" native="true">
-           <property name="minimumSize">
-            <size>
-             <width>131</width>
-             <height>158</height>
             </size>
            </property>
           </widget>
