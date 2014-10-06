@@ -83,48 +83,72 @@ void FGWConstant::paintEvent(QPaintEvent *)
     if (m_force)
     {
         QPointF startPos(0.0, 0.0);
-        QPointF startViewPos = m_model2View.map(startPos);
-
         QPointF endPos(m_displayedDuration, 0.0);
-        QPointF endViewPos = m_model2View.map(endPos);
-
         QPointF attackLevelPos(0, m_force->attackLevel());
-        QPointF attackLevelViewPos = m_model2View.map(attackLevelPos);
-
         QPointF attackLengthPos(m_force->attackLength(), m_force->level());
-        QPointF attackLengthViewPos = m_model2View.map(attackLengthPos);
-
         QPointF fadeLengthPos(m_force->duration() - m_force->fadeLength(), m_force->level());
-        QPointF fadeLengthViewPos = m_model2View.map(fadeLengthPos);
-
         QPointF fadeLevelPos(m_force->duration(), m_force->fadeLevel());
+        QPointF infinitePos(m_displayedDuration, m_force->level());
+
+        QPointF startViewPos = m_model2View.map(startPos);
+        QPointF endViewPos = m_model2View.map(endPos);
+        QPointF attackLevelViewPos = m_model2View.map(attackLevelPos);
+        QPointF attackLengthViewPos = m_model2View.map(attackLengthPos);
+        QPointF fadeLengthViewPos = m_model2View.map(fadeLengthPos);
         QPointF fadeLevelViewPos = m_model2View.map(fadeLevelPos);
+        QPointF infiniteViewPos = m_model2View.map(infinitePos);
 
         painter.setPen(Qt::black);
         painter.setBrush(Qt::green);
         QPolygon envelope;
-        envelope << startViewPos.toPoint()
-                 << attackLevelViewPos.toPoint()
-                 << attackLengthViewPos.toPoint()
-                 << fadeLengthViewPos.toPoint()
-                 << fadeLevelViewPos.toPoint()
-                 << endViewPos.toPoint();
+        if (m_force->isInfiniteDuration())
+        {
+            envelope << startViewPos.toPoint()
+                     << attackLevelViewPos.toPoint()
+                     << attackLengthViewPos.toPoint()
+                     << infiniteViewPos.toPoint()
+                     << endViewPos.toPoint();
+        }
+        else
+        {
+            envelope << startViewPos.toPoint()
+                     << attackLevelViewPos.toPoint()
+                     << attackLengthViewPos.toPoint()
+                     << fadeLengthViewPos.toPoint()
+                     << fadeLevelViewPos.toPoint()
+                     << endViewPos.toPoint();
+        }
         painter.drawPolygon(envelope);
 
         painter.setBrush(QBrush(Qt::red));
         painter.drawEllipse(attackLevelViewPos, m_handleRadius, m_handleRadius);
         painter.drawEllipse(attackLengthViewPos, m_handleRadius, m_handleRadius);
-        painter.drawEllipse(fadeLengthViewPos, m_handleRadius, m_handleRadius);
-        painter.drawEllipse(fadeLevelViewPos, m_handleRadius, m_handleRadius);
+        if (!m_force->isInfiniteDuration())
+        {
+            painter.drawEllipse(fadeLengthViewPos, m_handleRadius, m_handleRadius);
+            painter.drawEllipse(fadeLevelViewPos, m_handleRadius, m_handleRadius);
+        }
 
         if (!m_dragHandler->isDragging())
         {
-            QPointF centerViewPos = (attackLengthViewPos + fadeLengthViewPos) / 2;
             m_dragHandler->setHitAreaView(AttackLevel, attackLevelViewPos, m_handleRadius);
             m_dragHandler->setHitAreaView(AttackLength, attackLengthViewPos, m_handleRadius);
-            m_dragHandler->setHitAreaView(ForceLevel, centerViewPos, m_handleRadius + fadeLengthViewPos.x() - attackLengthViewPos.x(), m_handleRadius);
-            m_dragHandler->setHitAreaView(FadeLength, fadeLengthViewPos, m_handleRadius);
-            m_dragHandler->setHitAreaView(FadeLevel, fadeLevelViewPos, m_handleRadius);
+            if (m_force->isInfiniteDuration())
+            {
+                QPointF centerViewPos = (attackLengthViewPos + infiniteViewPos) / 2;
+                m_dragHandler->setHitAreaView(ForceLevel, centerViewPos,
+                                              m_handleRadius + (infiniteViewPos.x() - attackLengthViewPos.x()) / 2,
+                                              m_handleRadius);
+            }
+            else
+            {
+                QPointF centerViewPos = (attackLengthViewPos + fadeLengthViewPos) / 2;
+                m_dragHandler->setHitAreaView(ForceLevel, centerViewPos,
+                                              m_handleRadius + (fadeLengthViewPos.x() - attackLengthViewPos.x()) / 2,
+                                              m_handleRadius);
+                m_dragHandler->setHitAreaView(FadeLength, fadeLengthViewPos, m_handleRadius);
+                m_dragHandler->setHitAreaView(FadeLevel, fadeLevelViewPos, m_handleRadius);
+            }
         }
     }
 }

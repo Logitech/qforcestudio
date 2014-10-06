@@ -70,14 +70,13 @@ void FGWPeriodic::setForce(ForceEffect *force)
 
     if (m_force)
     {
-        connect(m_force, SIGNAL(envelopeChanged()), this, SLOT(updateEnvelope()));
         connect(m_force, SIGNAL(levelChanged(double)), this, SLOT(updateLevel(double)));
         connect(m_force, SIGNAL(durationChanged(double)), this, SLOT(updateDuration(double)));
         connect(m_force, SIGNAL(offsetChanged(double)), this, SLOT(updateOffset(double)));
         connect(m_force, SIGNAL(valuesChanged()), this, SLOT(update()));
         // TODO: phase, waveform
 
-        updateEnvelope();
+        update();
         updateLevel(m_force->level());
         updateOffset(m_force->offset());
         // TODO: phase, waveform
@@ -275,11 +274,6 @@ void FGWPeriodic::onPosDragged(int handleId, QPointF newPos)
             break;
         }
     }
-}
-
-void FGWPeriodic::updateEnvelope(void)
-{
-    update();
 }
 
 void FGWPeriodic::updateLevel(double)

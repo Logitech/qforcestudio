@@ -52,7 +52,6 @@ protected:
 protected slots:
     void onPosDragged(int handleId, QPointF newPos);
 
-    void updateEnvelope(void);
     void updateLevel(double);
     void updateWaveform(int);
     void updatePeriod(double);
