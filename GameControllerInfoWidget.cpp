@@ -37,6 +37,23 @@ GameControllerInfoWidget::GameControllerInfoWidget(QWidget *parent) :
     ui->deviceNameLabel->setText(tr("n/a"));
     ui->devicePathLabel->setText(tr("n/a"));
     ui->forceEffectSlotsLabel->setText(tr("n/a"));
+
+    ui->canRenderConstant->setEnabled(false);
+    ui->canRenderPeriodic->setEnabled(false);
+    ui->canRenderSquare->setEnabled(false);
+    ui->canRenderTriangle->setEnabled(false);
+    ui->canRenderSine->setEnabled(false);
+    ui->canRenderSawUp->setEnabled(false);
+    ui->canRenderSawDown->setEnabled(false);
+    ui->canRenderCustom->setEnabled(false);
+    ui->canRenderRamp->setEnabled(false);
+    ui->canRenderSpring->setEnabled(false);
+    ui->canRenderFriction->setEnabled(false);
+    ui->canRenderDamper->setEnabled(false);
+    ui->canRenderRumble->setEnabled(false);
+    ui->canRenderInertia->setEnabled(false);
+    ui->canAdjustGain->setEnabled(false);
+    ui->canAdjustAutocenter->setEnabled(false);
 }
 
 GameControllerInfoWidget::~GameControllerInfoWidget(void)
@@ -68,21 +85,4 @@ void GameControllerInfoWidget::setController(GameControllerPtr controller)
     ui->canRenderInertia->setChecked(m_controller->canRenderInertia());
     ui->canAdjustGain->setChecked(m_controller->canAdjustGain());
     ui->canAdjustAutocenter->setChecked(m_controller->canAdjustAutocenter());
-
-    ui->canRenderConstant->setEnabled(false);
-    ui->canRenderPeriodic->setEnabled(false);
-    ui->canRenderSquare->setEnabled(false);
-    ui->canRenderTriangle->setEnabled(false);
-    ui->canRenderSine->setEnabled(false);
-    ui->canRenderSawUp->setEnabled(false);
-    ui->canRenderSawDown->setEnabled(false);
-    ui->canRenderCustom->setEnabled(false);
-    ui->canRenderRamp->setEnabled(false);
-    ui->canRenderSpring->setEnabled(false);
-    ui->canRenderFriction->setEnabled(false);
-    ui->canRenderDamper->setEnabled(false);
-    ui->canRenderRumble->setEnabled(false);
-    ui->canRenderInertia->setEnabled(false);
-    ui->canAdjustGain->setEnabled(false);
-    ui->canAdjustAutocenter->setEnabled(false);
 }
