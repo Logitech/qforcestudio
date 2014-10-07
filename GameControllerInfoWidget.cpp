@@ -33,6 +33,10 @@ GameControllerInfoWidget::GameControllerInfoWidget(QWidget *parent) :
     ui(new Ui::GameControllerInfoWidget)
 {
     ui->setupUi(this);
+
+    ui->deviceNameLabel->setText(tr("n/a"));
+    ui->devicePathLabel->setText(tr("n/a"));
+    ui->forceEffectSlotsLabel->setText(tr("n/a"));
 }
 
 GameControllerInfoWidget::~GameControllerInfoWidget(void)
