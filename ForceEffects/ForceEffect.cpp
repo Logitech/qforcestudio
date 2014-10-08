@@ -40,6 +40,8 @@ ForceEffect::ForceEffect(quint16 forceType, QObject *parent) :
     m_effect.type = forceType;
     m_effect.id = -1;
 
+    m_lastSetDuration = 3.0;
+
     initializeEnvelope(NULL);
 }
 
@@ -224,12 +226,16 @@ double ForceEffect::delay(void) const
 
 double ForceEffect::duration(void) const
 {
-    return (m_effect.replay.length & 0x7fff) / 1000.0;
+    if (isInfiniteDuration())
+    {
+        return m_lastSetDuration;
+    }
+    return m_effect.replay.length / 1000.0;
 }
 
 bool ForceEffect::isInfiniteDuration(void) const
 {
-    return (0x7fff < m_effect.replay.length);
+    return (0 == m_effect.replay.length);
 }
 
 double ForceEffect::level(void) const
@@ -374,12 +380,15 @@ void ForceEffect::setDelay(double newDelay)
 
 void ForceEffect::setDuration(double newDuration, bool setInfinite /* = false */)
 {
-    if (setInfinite)
+    newDuration = qMax(0.0, qMin(32.767, newDuration));
+    int duration = qRound(newDuration * 1000);
+
+    if (setInfinite || (0 == duration))
     {
-        if (isInfiniteDuration() != setInfinite)
+        if (!isInfiniteDuration())
         {
-            m_effect.replay.length |= 0x8000;
-            emit durationIsInfiniteChanged(setInfinite);
+            m_effect.replay.length = 0;
+            emit durationIsInfiniteChanged(true);
             emit valuesChanged();
             update();
         }
@@ -387,10 +396,9 @@ void ForceEffect::setDuration(double newDuration, bool setInfinite /* = false */
     else
     {
         bool wasInfinite = isInfiniteDuration();
-        newDuration = qMax(0.0, qMin(32.767, newDuration));
-        int duration = qRound(newDuration * 1000);
         if (duration != m_effect.replay.length)
         {
+            m_lastSetDuration = newDuration;
             m_effect.replay.length = duration;
             emit durationChanged(newDuration);
             emit valuesChanged();
