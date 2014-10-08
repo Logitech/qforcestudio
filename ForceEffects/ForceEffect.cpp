@@ -380,10 +380,10 @@ void ForceEffect::setDelay(double newDelay)
 
 void ForceEffect::setDuration(double newDuration, bool setInfinite /* = false */)
 {
-    newDuration = qMax(0.0, qMin(32.767, newDuration));
+    newDuration = qMax(0.1, qMin(32.767, newDuration));
     int duration = qRound(newDuration * 1000);
 
-    if (setInfinite || (0 == duration))
+    if (setInfinite)
     {
         if (!isInfiniteDuration())
         {
@@ -407,8 +407,8 @@ void ForceEffect::setDuration(double newDuration, bool setInfinite /* = false */
                 emit durationIsInfiniteChanged(false);
                 emit valuesChanged();
             }
-            setAttackLength(qMin(attackLength(), newDuration - fadeLength()));
-            setFadeLength(qMin(fadeLength(), newDuration - attackLength()));
+            setAttackLength(qMin(attackLength(), qMax(0.0, newDuration - fadeLength())));
+            setFadeLength(qMin(fadeLength(), qMax(0.0, newDuration - attackLength())));
             update();
         }
     }
@@ -460,6 +460,10 @@ void ForceEffect::setAttackLevel(double newLevel)
 void ForceEffect::setAttackLength(double newLength)
 {
     Q_ASSERT(m_envelope);
+    if (!isInfiniteDuration())
+    {
+        newLength = qMin(duration(), newLength);
+    }
     m_envelope->setAttackLength(newLength);
     if (!isInfiniteDuration() && ((duration() - fadeLength()) < attackLength()))
     {
@@ -478,6 +482,10 @@ void ForceEffect::setFadeLevel(double newLevel)
 void ForceEffect::setFadeLength(double newLength)
 {
     Q_ASSERT(m_envelope);
+    if (!isInfiniteDuration())
+    {
+        newLength = qMin(duration(), newLength);
+    }
     m_envelope->setFadeLength(newLength);
     if (!isInfiniteDuration() && ((duration() - fadeLength()) < attackLength()))
     {
