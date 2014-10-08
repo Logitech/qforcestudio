@@ -118,7 +118,7 @@ void ForceEnvelope::setAttackLength(double newLength)
 {
     if (exists())
     {
-        int length = qRound(newLength * 1000.0);
+        int length = qMax(0, qRound(newLength * 1000.0));
         if (length != m_envelope->attack_length)
         {
             m_envelope->attack_length = length;
@@ -144,7 +144,7 @@ void ForceEnvelope::setFadeLength(double newLength)
 {
     if (exists())
     {
-        int length = qRound(newLength * 1000.0);
+        int length = qMax(0, qRound(newLength * 1000.0));
         if (length != m_envelope->fade_length)
         {
             m_envelope->fade_length = length;
