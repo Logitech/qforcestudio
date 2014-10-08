@@ -76,7 +76,6 @@ void DragHandle::startDrag(const QPointF startPos)
     m_offset = startPos - m_hitArea.center();
     m_lastPos = startPos;
     emit posDragged(m_id, m_lastPos - m_offset);
-    qDebug() << "Starting drag at " << m_lastPos;
 }
 
 void DragHandle::drag(const QPointF dragPos)

@@ -65,7 +65,7 @@ public:
     // in seconds, [0.0 ... 32.767]
     double delay(void) const;
 
-    // in seconds, [0.001 ... 32.767], returns 0 if infinite
+    // in seconds, [0.0 ... 32.767], returns last set value, if infinite
     double duration(void) const;
     bool isInfiniteDuration(void) const;
 
@@ -131,6 +131,7 @@ protected:
 
 protected:
     ff_effect m_effect;
+    double m_lastSetDuration;
     ForceEnvelope *m_envelope;
     QPointer<GameController> m_gameController;
 };

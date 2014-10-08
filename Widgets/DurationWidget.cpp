@@ -91,7 +91,6 @@ void DurationWidget::onDurationIsInfiniteChanged(bool isNowInfinite)
 {
     if (m_force)
     {
-        qDebug() << "Infinite changed: " << isNowInfinite;
         m_force->setDuration(m_force->duration(), isNowInfinite);
     }
 }

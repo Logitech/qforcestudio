@@ -190,11 +190,6 @@ void FGWConstant::onPosDragged(int handleId, QPointF newPos)
             case AttackLength:
                 m_force->setAttackLength(attackLength);
                 m_force->setLevel(level);
-                if ((m_displayedDuration - m_force->fadeLength()) < attackLength)
-                {
-                    fadeLength = m_displayedDuration - attackLength;
-                    m_force->setFadeLength(fadeLength);
-                }
                 break;
 
             case ForceLevel:
@@ -204,11 +199,6 @@ void FGWConstant::onPosDragged(int handleId, QPointF newPos)
             case FadeLength:
                 m_force->setFadeLength(fadeLength);
                 m_force->setLevel(level);
-                if ((m_displayedDuration - fadeLength) < m_force->attackLength())
-                {
-                    attackLength = m_displayedDuration - fadeLength;
-                    m_force->setAttackLength(attackLength);
-                }
                 break;
 
             case FadeLevel:
