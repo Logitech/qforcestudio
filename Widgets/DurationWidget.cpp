@@ -42,7 +42,7 @@ DurationWidget::DurationWidget(QWidget *parent) :
     connect(ui->durationSpinBox, SIGNAL(valueChanged(double)), this, SLOT(onDurationChanged(double)));
     connect(ui->infiniteCheckBox, SIGNAL(clicked(bool)), this, SLOT(onDurationIsInfiniteChanged(bool)));
 
-    ui->durationSpinBox->setRange(0.0, 32.767);
+    ui->durationSpinBox->setRange(0.1, 32.767);
     ui->durationSpinBox->setSingleStep(0.1);
 }
 

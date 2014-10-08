@@ -138,5 +138,8 @@ void EnvelopeWidget::updateUserInterface(void)
         bool isInfinite = m_force->isInfiniteDuration();
         ui->fadeLevelSpinBox->setEnabled(!isInfinite);
         ui->fadeLengthSpingBox->setEnabled(!isInfinite);
+
+        ui->attackLengthSpinBox->setRange(0.0, m_force->duration());
+        ui->fadeLengthSpingBox->setRange(0.0, m_force->duration());
     }
 }
