@@ -461,6 +461,10 @@ void ForceEffect::setAttackLength(double newLength)
 {
     Q_ASSERT(m_envelope);
     m_envelope->setAttackLength(newLength);
+    if (!isInfiniteDuration() && ((duration() - fadeLength()) < attackLength()))
+    {
+        m_envelope->setFadeLength(duration() - attackLength());
+    }
     update();
 }
 
@@ -475,6 +479,10 @@ void ForceEffect::setFadeLength(double newLength)
 {
     Q_ASSERT(m_envelope);
     m_envelope->setFadeLength(newLength);
+    if (!isInfiniteDuration() && ((duration() - fadeLength()) < attackLength()))
+    {
+        m_envelope->setAttackLength(duration() - fadeLength());
+    }
     update();
 }
 
