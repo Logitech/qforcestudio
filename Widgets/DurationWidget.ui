@@ -31,8 +31,14 @@
    </item>
    <item>
     <widget class="QCheckBox" name="infiniteCheckBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="text">
       <string>INF</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

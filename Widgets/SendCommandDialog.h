@@ -25,58 +25,37 @@
  *
  */
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef SENDCOMMANDDIALOG_H
+#define SENDCOMMANDDIALOG_H
 
-#include <QMainWindow>
+#include <QDialog>
 #include "GameController.h"
-#include "ForceEffect.h"
-#include "ForceWidget.h"
+
 
 namespace Ui {
-class MainWindow;
+class SendCommandDialog;
 }
 
-
-class MainWindow : public QMainWindow
+class SendCommandDialog : public QDialog
 {
     Q_OBJECT
-
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit SendCommandDialog(QWidget *parent = 0);
+    ~SendCommandDialog(void);
 
     void setGameController(GameControllerPtr controller);
+    GameControllerPtr gameController(void) const;
 
 protected slots:
-    void onSelectGameController(void);
-    void onAbout(void);
-    void onCreateRumbleForce(void);
-    void onCreatePeriodicForce(void);
-    void onCreateConstantForce(void);
-    void onCreateSpringForce(void);
-    void onCreateFrictionForce(void);
-    void onCreateDamperForce(void);
-    void onCreateInertiaForce(void);
-    void onCreateRampForce(void);
-
-    void onResetAllForces(void);
-    void onPauseAllForces(void);
-    void onContinueAllForces(void);
-    void onStopAllForces(void);
-    void onSetActuatorsOn(void);
-    void onSetActuatorsOff(void);
     void onSendCommand(void);
-
-    void onForceMdiChildDestroyed(void);
-
-public:
-    void addForceMdiChild(ForceWidget *mdiChild, ForceEffect *force = NULL);
+    void commandChanged(const QString& command);
 
 private:
-    Ui::MainWindow *ui;
+    QByteArray commandAsBytes(const QString& command);
+
+private:
+    Ui::SendCommandDialog *ui;
     GameControllerPtr m_gameController;
-    ForceEffectList m_forces;
 };
 
-#endif // MAINWINDOW_H
+#endif // SENDCOMMANDDIALOG_H
