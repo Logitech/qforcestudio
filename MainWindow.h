@@ -60,6 +60,14 @@ protected slots:
     void onCreateInertiaForce(void);
     void onCreateRampForce(void);
 
+    void onResetAllForces(void);
+    void onPauseAllForces(void);
+    void onContinueAllForces(void);
+    void onStopAllForces(void);
+    void onSetActuatorsOn(void);
+    void onSetActuatorsOff(void);
+    void onSendCommand(void);
+
     void onForceMdiChildDestroyed(void);
 
 public:
