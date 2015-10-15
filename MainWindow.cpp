@@ -34,6 +34,7 @@
 #include "AboutBoxDialog.h"
 #include "GameController.h"
 #include "ForceEffect.h"
+#include "SendCommandDialog.h"
 
 // ForceWidgets
 #include "FWRumble.h"
@@ -77,6 +78,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionCreateDamper, SIGNAL(triggered()), this, SLOT(onCreateDamperForce()));
     connect(ui->actionCreateInertia, SIGNAL(triggered()), this, SLOT(onCreateInertiaForce()));
     connect(ui->actionCreateRamp, SIGNAL(triggered()), this, SLOT(onCreateRampForce()));
+
+    connect(ui->actionResetAllForces, SIGNAL(triggered()), this, SLOT(onResetAllForces()));
+    connect(ui->actionStopAllForces, SIGNAL(triggered()), this, SLOT(onStopAllForces()));
+    connect(ui->actionPauseAllForces, SIGNAL(triggered()), this, SLOT(onPauseAllForces()));
+    connect(ui->actionContinueAllForces, SIGNAL(triggered()), this, SLOT(onContinueAllForces()));
+    connect(ui->actionSetActuatorsOn, SIGNAL(triggered()), this, SLOT(onSetActuatorsOn()));
+    connect(ui->actionSetActuatorsOff, SIGNAL(triggered()), this, SLOT(onSetActuatorsOff()));
+    connect(ui->actionSendCommand, SIGNAL(triggered()), this, SLOT(onSendCommand()));
 
     QSettings settings;
     restoreGeometry(settings.value("mainWindow.geometry").toByteArray());
@@ -130,6 +139,7 @@ void MainWindow::onSelectGameController(void)
     dialog->setGameController(m_gameController);
     if (QDialog::Accepted == dialog->exec())
     {
+        m_gameController->close();
         setGameController(dialog->gameController());
     }
 }
@@ -180,6 +190,61 @@ void MainWindow::onCreateRampForce(void)
     addForceMdiChild(new FWRamp(this), new FERamp());
 }
 
+void MainWindow::onResetAllForces(void)
+{
+    if (m_gameController)
+    {
+        m_gameController->resetAllForces();
+    }
+}
+
+void MainWindow::onPauseAllForces(void)
+{
+    if (m_gameController)
+    {
+        m_gameController->pauseAllForces();
+    }
+}
+
+void MainWindow::onContinueAllForces(void)
+{
+    if (m_gameController)
+    {
+        m_gameController->continueAllForces();
+    }
+}
+
+void MainWindow::onStopAllForces(void)
+{
+    if (m_gameController)
+    {
+        m_gameController->stopAllForces();
+    }
+}
+
+void MainWindow::onSetActuatorsOn(void)
+{
+    if (m_gameController)
+    {
+        m_gameController->enableActuators(true);
+    }
+}
+
+void MainWindow::onSetActuatorsOff(void)
+{
+    if (m_gameController)
+    {
+        m_gameController->enableActuators(false);
+    }
+}
+
+void MainWindow::onSendCommand(void)
+{
+    SendCommandDialog *dialog = new SendCommandDialog(this);
+    dialog->setGameController(m_gameController);
+    dialog->exec();
+}
+
 void MainWindow::onForceMdiChildDestroyed(void)
 {
     ForceEffectList forcesInUse;
@@ -196,12 +261,19 @@ void MainWindow::onForceMdiChildDestroyed(void)
         }
     }
 
-    foreach (ForceEffect *force, m_forces)
+    QMutableListIterator<QPointer<ForceEffect>> i(m_forces);
+    while (i.hasNext())
     {
-        if (!forcesInUse.contains(force))
+        QPointer<ForceEffect> val = i.next();
+        if (!forcesInUse.contains(val))
         {
-            force->deleteLater();
+            if (m_gameController)
+            {
+                m_gameController->removeForce(val);            
+            }
+            i.remove();
         }
+    
     }
 
     m_forces = forcesInUse;
@@ -209,6 +281,11 @@ void MainWindow::onForceMdiChildDestroyed(void)
 
 void MainWindow::addForceMdiChild(ForceWidget *mdiChild, ForceEffect *force)
 {
+    if (!m_gameController)
+    {
+        return;
+    }
+
     Q_ASSERT(mdiChild);
     if (force)
     {
@@ -219,6 +296,12 @@ void MainWindow::addForceMdiChild(ForceWidget *mdiChild, ForceEffect *force)
         }
         force->setGameController(m_gameController.data());
         mdiChild->setForce(force);
+
+        // Download it immediately
+        if (!force->isDownloaded())
+        {
+            m_gameController->addForce(force);
+        }
     }
     ui->mdiArea->addSubWindow(mdiChild);
     mdiChild->setAttribute(Qt::WA_DeleteOnClose);

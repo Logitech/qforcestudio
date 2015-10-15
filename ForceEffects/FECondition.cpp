@@ -35,6 +35,8 @@ FECondition::FECondition(quint16 forceType, QObject *parent /* = 0 */) :
 
     connect(m_firstCondition, SIGNAL(changed()), this, SIGNAL(valuesChanged()));
     connect(m_secondCondition, SIGNAL(changed()), this, SIGNAL(valuesChanged()));
+    connect(m_firstCondition, SIGNAL(changed()), this, SLOT(update()));
+    connect(m_secondCondition, SIGNAL(changed()), this, SLOT(update()));
 }
 
 ForceCondition *FECondition::firstCondition(void) const
@@ -58,19 +60,20 @@ QString FECondition::gist(void) const
 void FECondition::reset(void)
 {
     ForceEffect::reset();
-    m_firstCondition->setIsSymmetric(false);
-    m_firstCondition->setNegativeCoefficient(0.7);
+    m_firstCondition->setIsSymmetric(true);
+    m_firstCondition->setNegativeCoefficient(1.0);
     m_firstCondition->setNegativeSaturation(1.0);
     m_firstCondition->setDeadBand(0.1);
     m_firstCondition->setOffset(0.0);
-    m_firstCondition->setPositiveCoefficient(0.7);
+    m_firstCondition->setPositiveCoefficient(1.0);
     m_firstCondition->setPositiveSaturation(1.0);
 
-    m_secondCondition->setIsSymmetric(false);
-    m_secondCondition->setNegativeCoefficient(0.7);
+    m_secondCondition->setIsSymmetric(true);
+    m_secondCondition->setNegativeCoefficient(1.0);
     m_secondCondition->setNegativeSaturation(1.0);
     m_secondCondition->setDeadBand(0.1);
     m_secondCondition->setOffset(0.0);
-    m_secondCondition->setPositiveCoefficient(0.7);
+    m_secondCondition->setPositiveCoefficient(1.0);
     m_secondCondition->setPositiveSaturation(1.0);
 }
+

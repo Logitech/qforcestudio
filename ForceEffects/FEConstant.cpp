@@ -48,10 +48,10 @@ void FEConstant::reset(void)
 {
     ForceEffect::reset();
     setLevel(1.0);
-    setAttackLevel(0.25);
-    setAttackLength(1.0);
-    setFadeLevel(0.25);
-    setFadeLength(1.0);
+    setAttackLevel(0.0);
+    setAttackLength(0.0);
+    setFadeLength(0.0);
+    setFadeLevel(0.0);
 }
 
 double FEConstant::level(void) const

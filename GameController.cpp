@@ -29,6 +29,8 @@
 #include "GameController.h"
 #include "ForceEffect.h"
 #include <QDebug>
+
+#ifdef Q_OS_LINUX
 #include <inttypes.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
@@ -37,6 +39,7 @@
 #include <fcntl.h>
 #include <linux/input.h>
 #include <errno.h>
+#endif
 
 GameController::GameController(QObject *parent) :
     QObject(parent),
@@ -149,7 +152,7 @@ bool GameController::open(const QString &filename)
         return false;
     }
 #else
-#warning No game controller support on current platform...
+#pragma warning("No game controller support on current platform...")
 #endif
 
     return true;
@@ -159,7 +162,7 @@ void GameController::close(void)
 {
     if (isOpen())
     {
-        ::close(m_fd);
+        //::close(m_fd);
         m_fd = -1;
     }
 
@@ -269,6 +272,7 @@ bool GameController::canAdjustAutocenter(void) const
     return hasSupportFor(FF_AUTOCENTER);
 }
 
+#ifdef Q_OS_LINUX
 GameControllerPtrList GameController::allControllers(void)
 {
     GameControllerPtrList result;
@@ -283,6 +287,7 @@ GameControllerPtrList GameController::allControllers(void)
     }
     return result;
 }
+#endif
 
 bool GameController::addForce(ForceEffect *force)
 {
@@ -305,7 +310,7 @@ bool GameController::addForce(ForceEffect *force)
         return false;
     }
 #else
-#warning No add force support on current platform
+#pragma warning("No add force support on current platform")
 #endif
     return true;
 }
@@ -340,7 +345,7 @@ bool GameController::startForce(ForceEffect *force)
     write(m_fd, (const void *) &play, sizeof(play));
     // TODO: add error handling
 #else
-#warning No start force support on current platform
+#pragma warning("No start force support on current platform")
 #endif
     return true;
 }
@@ -374,7 +379,7 @@ bool GameController::stopForce(ForceEffect *force)
     write(m_fd, (const void *) &stop, sizeof(stop));
     // TODO: add error handling
 #else
-#warning No stop force support on current platform
+#pragma warning("No stop force support on current platform")
 #endif
     return true;
 }
@@ -407,9 +412,39 @@ bool GameController::removeForce(ForceEffect *force)
     }
     force->ffEffect()->id = -1;
 #else
-#warning No remove force support on current platform
+#pragma warning("No remove force support on current platform")
 #endif
     return true;
+}
+
+bool GameController::stopAllForces(void)
+{
+    return false;
+}
+
+bool GameController::pauseAllForces(void)
+{
+    return false;
+}
+
+bool GameController::continueAllForces(void)
+{
+    return false;
+}
+
+bool GameController::resetAllForces(void)
+{
+    return false;
+}
+
+bool GameController::enableActuators(bool enable)
+{
+    return false;
+}
+
+bool GameController::sendCommand(const QByteArray& command, QByteArray& response)
+{
+    return false;
 }
 
 bool GameController::hasSupportFor(int capability) const

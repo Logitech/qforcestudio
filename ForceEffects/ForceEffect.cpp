@@ -195,7 +195,7 @@ void ForceEffect::reset(void)
 {
     setDirection(0.0);
     setDelay(0.0);
-    setDuration(3.0);
+    setDuration(3.0, true);
 
     setAttackLevel(0.0);
     setAttackLength(0.0);
@@ -217,6 +217,11 @@ void ForceEffect::update(void)
 double ForceEffect::direction(void) const
 {
     return convertFF2RAD(m_effect.direction);
+}
+
+quint16 ForceEffect::directionInFF(void) const
+{
+    return m_effect.direction;
 }
 
 double ForceEffect::delay(void) const
