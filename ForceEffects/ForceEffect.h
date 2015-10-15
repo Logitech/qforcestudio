@@ -57,9 +57,8 @@ public:
     void start(void);
     void stop(void);
     virtual void reset(void);
-    virtual void update(void);
 
-    // in RADIANS, [0.0 ... M_TAU[
+    // in RADIANS, [0.0 ... M_TAU]
     double direction(void) const;
 
     // in seconds, [0.0 ... 32.767]
@@ -113,6 +112,7 @@ signals:
     void valuesChanged(void);
 
 public slots:
+    void update(void);
     void setDirection(double newDirection);
     void setDelay(double newDelay);
     void setDuration(double newDuration, bool setInfinite = false);

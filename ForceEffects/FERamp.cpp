@@ -72,6 +72,7 @@ void FERamp::setStartLevel(double newLevel)
     {
         m_effect.u.ramp.start_level = level;
         emit valuesChanged();
+        update();
     }
 }
 
@@ -83,5 +84,6 @@ void FERamp::setEndLevel(double newLevel)
     {
         m_effect.u.ramp.end_level = level;
         emit valuesChanged();
+        update();
     }
 }

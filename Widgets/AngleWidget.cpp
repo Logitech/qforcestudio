@@ -30,6 +30,8 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include <QDebug>
+
+#define _USE_MATH_DEFINES
 #include <math.h>
 
 
