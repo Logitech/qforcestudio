@@ -28,7 +28,7 @@
 #include <QApplication>
 #include "MainWindow.h"
 
-static MainWindow *s_mainWindowInstance = NULL;
+MainWindow *s_mainWindowInstance = NULL;
 
 MainWindow *mainWindowInstance(void)
 {

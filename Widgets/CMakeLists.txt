@@ -10,6 +10,7 @@ set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/ForceButtonBox.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/PeriodFrequencyWidget.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/RampWidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/SendCommandDialog.cpp
     PARENT_SCOPE)
 
 set(HEADERS
@@ -24,6 +25,7 @@ set(HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/ForceButtonBox.h
     ${CMAKE_CURRENT_SOURCE_DIR}/PeriodFrequencyWidget.h
     ${CMAKE_CURRENT_SOURCE_DIR}/RampWidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/SendCommandDialog.h
     PARENT_SCOPE)
 
 set(FORMS
@@ -36,4 +38,5 @@ set(FORMS
     ${CMAKE_CURRENT_SOURCE_DIR}/ForceButtonBox.ui
     ${CMAKE_CURRENT_SOURCE_DIR}/PeriodFrequencyWidget.ui
     ${CMAKE_CURRENT_SOURCE_DIR}/RampWidget.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/SendCommandDialog.ui
     PARENT_SCOPE)

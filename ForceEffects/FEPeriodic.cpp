@@ -77,15 +77,15 @@ QString FEPeriodic::gist(void) const
 void FEPeriodic::reset(void)
 {
     ForceEffect::reset();
-    setWaveform(FF_SQUARE);
+    setWaveform(FF_SINE);
     setPeriod(0.5);
     setLevel(0.75);
     setOffset(0.0);
     setPhase(0.0);
-    setAttackLevel(0.25);
-    setAttackLength(1.0);
-    setFadeLength(1.0);
-    setFadeLevel(1.0);
+    setAttackLevel(0.0);
+    setAttackLength(0.0);
+    setFadeLength(0.0);
+    setFadeLevel(0.0);
 }
 
 double FEPeriodic::value(double atTimeIndex) const

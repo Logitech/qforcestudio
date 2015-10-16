@@ -83,7 +83,7 @@ void DurationWidget::onDurationChanged(double newDuration)
 {
     if (m_force)
     {
-        m_force->setDuration(newDuration);
+        m_force->setDuration(newDuration, m_force->isInfiniteDuration());
     }
 }
 

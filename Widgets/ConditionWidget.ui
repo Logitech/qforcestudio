@@ -73,12 +73,18 @@
      <property name="text">
       <string>Both Axes</string>
      </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
    <item row="4" column="0">
     <widget class="QCheckBox" name="symmetricCheckBox">
      <property name="text">
       <string>Symmetric</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

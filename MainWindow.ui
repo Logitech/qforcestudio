@@ -55,7 +55,7 @@
      <x>0</x>
      <y>0</y>
      <width>741</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuEffects">
@@ -80,7 +80,20 @@
     <addaction name="actionAbout"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuDevice">
+    <property name="title">
+     <string>Device</string>
+    </property>
+    <addaction name="actionResetAllForces"/>
+    <addaction name="actionPauseAllForces"/>
+    <addaction name="actionContinueAllForces"/>
+    <addaction name="actionStopAllForces"/>
+    <addaction name="actionSetActuatorsOn"/>
+    <addaction name="actionSetActuatorsOff"/>
+    <addaction name="actionSendCommand"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuDevice"/>
    <addaction name="menuEffects"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -197,6 +210,41 @@
    </property>
    <property name="toolTip">
     <string>Show About Box...</string>
+   </property>
+  </action>
+  <action name="actionPauseAllForces">
+   <property name="text">
+    <string>Pause all forces</string>
+   </property>
+  </action>
+  <action name="actionSetActuatorsOn">
+   <property name="text">
+    <string>Set actuators on</string>
+   </property>
+  </action>
+  <action name="actionSetActuatorsOff">
+   <property name="text">
+    <string>Set actuators off</string>
+   </property>
+  </action>
+  <action name="actionStopAllForces">
+   <property name="text">
+    <string>Stop all forces</string>
+   </property>
+  </action>
+  <action name="actionContinueAllForces">
+   <property name="text">
+    <string>Continue all forces</string>
+   </property>
+  </action>
+  <action name="actionResetAllForces">
+   <property name="text">
+    <string>Reset all forces</string>
+   </property>
+  </action>
+  <action name="actionSendCommand">
+   <property name="text">
+    <string>Send command</string>
    </property>
   </action>
  </widget>
