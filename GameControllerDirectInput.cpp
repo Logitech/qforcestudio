@@ -547,7 +547,7 @@ bool GameControllerDirectInput::toDIEFFECT(ForceEffect *force, DirectInputForceE
             dife.envelope.dwAttackLevel = force->attackLevel() * DI_FFNOMINALMAX;
             dife.envelope.dwAttackTime = force->attackLength() * 1000 * 1000;
             dife.envelope.dwFadeLevel = force->fadeLevel() * DI_FFNOMINALMAX;
-            dife.envelope.dwAttackTime = force->fadeLength() * 1000 * 1000;
+            dife.envelope.dwFadeTime = force->fadeLength() * 1000 * 1000;
             break;
 
         case FF_DAMPER:
