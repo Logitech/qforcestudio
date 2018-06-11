@@ -27,6 +27,7 @@
 
 #include "QForceStudio.h"
 #include "GameController.h"
+#include "FakeGameController.h"
 #include "ForceEffect.h"
 #include <QDebug>
 
@@ -271,6 +272,15 @@ bool GameController::canAdjustAutocenter(void) const
 {
     return hasSupportFor(FF_AUTOCENTER);
 }
+
+#ifdef Q_OS_MAC
+GameControllerPtrList GameController::allControllers(void)
+{
+    GameControllerPtrList result;
+    result.append(GameControllerPtr(new FakeGameController));
+    return result;
+}
+#endif
 
 #ifdef Q_OS_LINUX
 GameControllerPtrList GameController::allControllers(void)
