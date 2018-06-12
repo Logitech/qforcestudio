@@ -43,13 +43,13 @@ public:
     virtual ~GameController(void);
 
     // open/close
-    bool open(const QString &filename);
-    void close(void);
-    bool isOpen(void) const;
+    virtual bool open(const QString &filename = QString());
+    virtual void close(void);
+    virtual bool isOpen(void) const;
 
-    QString name(void) const;
-    QString filename(void) const;
-    int numEffects(void) const;
+    virtual QString name(void) const;
+    virtual QString filename(void) const;
+    virtual int numEffects(void) const;
 
     // capabilities
     bool canRenderConstant(void) const;
@@ -73,10 +73,18 @@ public:
     static GameControllerPtrList allControllers(void);
 
     // forces on this device
-    bool addForce(ForceEffect *force);
-    bool startForce(ForceEffect *force);
-    bool stopForce(ForceEffect *force);
-    bool removeForce(ForceEffect *force);
+    virtual bool addForce(ForceEffect *force);
+    virtual bool startForce(ForceEffect *force);
+    virtual bool stopForce(ForceEffect *force);
+    virtual bool removeForce(ForceEffect *force);
+
+    virtual bool stopAllForces(void);
+    virtual bool pauseAllForces(void);
+    virtual bool continueAllForces(void);
+    virtual bool resetAllForces(void);
+    virtual bool enableActuators(bool enable);
+
+    virtual bool sendCommand(const QByteArray& command, QByteArray& response);
 
 signals:
     void errorMessage(const QString &newMessage);
@@ -84,7 +92,7 @@ signals:
 public slots:
 
 protected:
-    bool hasSupportFor(int capability) const;
+    virtual bool hasSupportFor(int capability) const;
 
 protected:
     int m_fd;
