@@ -45,7 +45,7 @@ EnvelopeWidget::EnvelopeWidget(QWidget *parent) :
     ui->attackLevelSpinBox->setSingleStep(0.05);
     ui->attackLengthSpinBox->setRange(0.0, 32.767);
     ui->attackLengthSpinBox->setSingleStep(0.1);
-    ui->effectLevelSpinBox->setRange(0.0, 1.0);
+    ui->effectLevelSpinBox->setRange(-1.0, 1.0);
     ui->effectLevelSpinBox->setSingleStep(0.05);
     ui->fadeLevelSpinBox->setRange(0.0, 1.0);
     ui->fadeLevelSpinBox->setSingleStep(0.05);
